@@ -1,0 +1,45 @@
+<head>
+    <title>代码高亮测试</title>
+    <link rel="stylesheet" href="../codes/highlight/python.css">
+    <link rel="stylesheet" href="../codes/code.css">
+    <script type="text/javascript" src="../codes/code_tools.js"></script>
+</head>
+
+<div class="code">
+    <script id=jT8t5oSgGeoLCNNlF4h7AFzmTikjsZ4yGbxEA6yWBimylCdQnKCJwtktto7eEbGO>
+        function copyTextjT8t5oSgGeoLCNNlF4h7AFzmTikjsZ4yGbxEA6yWBimylCdQnKCJwtktto7eEbGO() {
+            var parent_ = document.getElementById("jT8t5oSgGeoLCNNlF4h7AFzmTikjsZ4yGbxEA6yWBimylCdQnKCJwtktto7eEbGO").parentElement;
+            var content_ = parent_.children[2];
+            var btn = parent_.children[1];
+
+            btn.innerHTML = "Copied";
+
+            if (document.body.createTextRange) {
+                var range = document.body.createTextRange();
+                range.moveToElementText(content_);
+                range.select();
+            }
+            else if (window.getSelection) {
+                var selection = window.getSelection();
+                var range = document.createRange();
+                range.selectNodeContents(content_);
+                selection.removeAllRanges();
+                selection.addRange(range);
+            }
+            else {
+                console.warn("none");
+            }
+            document.execCommand("Copy"); // 执行浏览器复制命令
+            clearSlct();
+
+            setTimeout(function () { btn.innerHTML = "Click to Copy"; }, 500);
+        }
+    </script>
+    <button class="copy_button"
+        onclick="copyTextjT8t5oSgGeoLCNNlF4h7AFzmTikjsZ4yGbxEA6yWBimylCdQnKCJwtktto7eEbGO()">Click to Copy</button>
+    <div class="highlight">
+        <pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;helloworld&quot;</span><span class="p">)</span>
+    </pre>
+    </div>
+
+</div>
