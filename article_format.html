@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<body>
+    <div class="content">
+        <iframe id="iframe_" src="" style="overflow: hidden;" frameborder="no" marginwidth="0"
+            marginheight="0" scrolling="no"></iframe>
+    </div>
+</body>
+
+<head>
+    <style type="text/css">
+        #iframe_ {
+        }
+    </style>
+
+    <script type="text/javascript">
+        var _src="articles/"+location.search.substr(1,location.search.length-1)+".html";
+ 
+        ifr=document.getElementById("iframe_");
+        ifr.src=_src
+
+        function reinitIframe() {
+            var ifm = document.getElementById("iframe_");
+            var subWeb = document.frames ? document.frames["iframe_"].document : ifm.contentDocument;
+            if (ifm != null) {
+                ifm.height = document.body.scrollHeight;
+                ifm.width = document.body.scrollWidth;
+            }
+        }
+        setTimeout('reinitIframe()',200);//我也不知道为什么要延时
+    </script>
+</head>
+
