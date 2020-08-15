@@ -25,14 +25,19 @@
 <body>
     <div id="main_content">
         <br><br><br><br><br><br><br><br><br>
-        <div name="license" style="
+    </div>
+    <div name="license" style="
+                position:fixed;
                 width:100%;
+                opacity:0.2;
+                bottom:10px;
+                left: 300px;
             ">
             <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议"
                     style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />本作品采用<a
                 rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0
                 国际许可协议</a>进行许可。
-        </div>
+    </div>
     <div id="side_bar">
         <div name="background_picture" style="
             overflow: hidden;
@@ -89,14 +94,24 @@
             <li>Blogs</li>
         </div>
 
-        <img style="
+        <img name="github" style="
             width: 62px;
             height: 42px;
             position: absolute;
             bottom: 25px;
             left: 15px;
             cursor:pointer;
-        " src='/img/github.png' onclick="window.open('https://github.com/yunline/yunline.github.io')">
+        " src='/img/github.png' onclick="window.open('https://github.com/yunline')">
+
+        <img name="bli" style="
+        width: 42px;
+        height: 42px;
+        position: absolute;
+        bottom: 25px;
+        left: 85px;
+        cursor:pointer;
+        " src='/img/bli.png' onclick="window.open('https://space.bilibili.com/49690602')">
+
     </div>
     <script type="text/javascript">
         if(location.search.length == 0){var url = location.protocol+"/404.html";}
