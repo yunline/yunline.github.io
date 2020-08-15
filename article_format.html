@@ -1,33 +1,110 @@
 <!DOCTYPE html>
-
-<body>
-    <div class="content">
-        <iframe id="iframe_" src="" style="overflow: hidden;" frameborder="no" marginwidth="0"
-            marginheight="0" scrolling="no"></iframe>
-    </div>
-</body>
-
 <head>
-    <style type="text/css">
-        #iframe_ {
+    <style>
+        body{
+            background-color: rgb(255, 255, 248);
+        }
+        #main_content{
+            padding-left: 300px;
+            max-width: 75%;
+        }
+        #side_bar{
+            position: fixed;
+            left:0px;
+            top:0px;
+            background-color: rgb(67, 105, 139);
+            color:#e6e6e6;
+            float:inherit;
+            box-shadow:0px 0px 5px #888888;
+            width: 280px;
+            height:100%;
         }
     </style>
-
-    <script type="text/javascript">
-        var _src="articles/"+location.search.substr(1,location.search.length-1)+".html";
- 
-        ifr=document.getElementById("iframe_");
-        ifr.src=_src
-
-        function reinitIframe() {
-            var ifm = document.getElementById("iframe_");
-            var subWeb = document.frames ? document.frames["iframe_"].document : ifm.contentDocument;
-            if (ifm != null) {
-                ifm.height = document.body.scrollHeight;
-                ifm.width = document.body.scrollWidth;
-            }
-        }
-        setTimeout('reinitIframe()',200);//我也不知道为什么要延时
-    </script>
+    <link rel="icon" href="img/head.png" sizes="64x64">
 </head>
+<body>
+    <div id="main_content"></div>
+    <div id="side_bar">
+        <div name="background_picture" style="
+            overflow: hidden;
+            width: 280px;
+            height: 158px;
+            box-shadow: -5px 0px 10px #000000;
+            ">
+            <img src="img/bg.png" style="
+                    width: 280px;
+                    height: 158px;
+                    filter: blur(5px);
+                    ">
+        </div>
 
+        <div name="name" style="
+            position: absolute;
+            left: 80px;
+            top: 75px;
+            border-radius: 10px;
+            width: 150px;
+            height: 45px;
+            background-color: #70b7d3;
+            box-shadow:0px 0px 10px #000000;
+            text-shadow:0px 0px 10px #000000;
+        ">
+            <h1 style="
+                position: relative;
+                text-align:center;
+                top:-20px;
+            ">云line</h1>
+        </div>
+        
+        <img name="head" src="./img/head.png" style="
+            border-radius:40px;
+            width:80px;
+            height:80px;
+            position:fixed;
+            left:25px;
+            top:30px;
+            box-shadow:0px 0px 10px #000000;
+        "> 
+
+        <div name="list" style="
+            position: relative;
+            font-size: 30px;
+            line-height: 50px;
+            left: 10px;
+            top:10px;
+            text-shadow: 0px 0px 10px #000000;
+            list-style: none;
+            cursor: pointer;
+        ">
+            <li onclick="location.href=(location.protocol+'article_format.html?introduction')">Introduction</li>
+            <li>Blogs</li>
+        </div>
+
+        <img style="
+            width: 62px;
+            height: 42px;
+            position: absolute;
+            bottom: 25px;
+            left: 15px;
+            cursor:pointer;
+        " src='/img/github.png' onclick="window.open('https://github.com/yunline/yunline.github.io')">
+    </div>
+    <script type="text/javascript">
+        if(location.search.length == 0){var url = location.protocol+"/404.html";}
+        else{var url = location.protocol+"/articles/" + location.search.substr(1, location.search.length - 1) + ".html";}
+        var httpRequest = new XMLHttpRequest();//创建HttpRequest对象
+        httpRequest.open('GET', url, true); //打开连接
+        httpRequest.send();
+    
+        httpRequest.onreadystatechange = function () {//回调函数
+            if (httpRequest.readyState == 4 && httpRequest.status == 200) {//如果成功
+                var html = httpRequest.responseText;//获取到服务端返回的数据
+                document.getElementById("main_content").innerHTML = html;
+            }
+            else if(httpRequest.status == 404){//如果没有获取到
+                location.href=location.protocol+"/article_format.html";//用一种奇奇怪怪的方式跳转到404页面
+            }
+        };
+    
+    </script>
+</body>
