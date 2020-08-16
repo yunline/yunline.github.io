@@ -1,20 +1,27 @@
 <head>
     <title>你好世界</title>
-    <link rel="stylesheet" href="../codes/highlight/python.css">
-    <link rel="stylesheet" href="../codes/code.css">
-    <script type="text/javascript" src="../codes/code_tools.js"></script>
+    <link rel="stylesheet" href="../style/codes/highlight/python.css">
+    <link rel="stylesheet" href="../style/codes/code.css">
+    <link rel="stylesheet" href="../style/public.css">
+    <script type="text/javascript" src="codes/code_tools.js"></script>
 </head>
 
 <h1>你好世界！</h1>
 
-<div class="code">
-    <script id=jT8t5oSgGeoLCNNlF4h7AFzmTikjsZ4yGbxEA6yWBimylCdQnKCJwtktto7eEbGO>
-        function copyTextjT8t5oSgGeoLCNNlF4h7AFzmTikjsZ4yGbxEA6yWBimylCdQnKCJwtktto7eEbGO() {
-            var parent_ = document.getElementById("jT8t5oSgGeoLCNNlF4h7AFzmTikjsZ4yGbxEA6yWBimylCdQnKCJwtktto7eEbGO").parentElement;
-            var content_ = parent_.children[2];
-            var btn = parent_.children[1];
+<p>这是一个测试页面，测试代码高亮系统是否正常使用，以下是代码高亮的源代码</p>
 
-            btn.innerHTML = "Copied";
+<div class="code" id="AU3cssF7rRQ1lITdedongtABcTQwaddjLv0a8OUwT3YT1gy8KUDTEervIar8DOsg">
+    <button class="copy_button"
+        onclick="
+            var parent_ = document.getElementById('AU3cssF7rRQ1lITdedongtABcTQwaddjLv0a8OUwT3YT1gy8KUDTEervIar8DOsg');
+            var content_ = parent_.children[1];
+            var btn = parent_.children[0];
+
+            var clearSlct = 'getSelection' in window ? function () {//清除已选择，来自https://www.cnblogs.com/wangpeng-friend/p/6733070.html
+                window.getSelection().removeAllRanges();} :
+                function () {document.selection.empty();};
+
+            btn.innerHTML = 'Copied';
 
             if (document.body.createTextRange) {
                 var range = document.body.createTextRange();
@@ -29,19 +36,71 @@
                 selection.addRange(range);
             }
             else {
-                console.warn("none");
+                console.warn('none');
             }
-            document.execCommand("Copy"); // 执行浏览器复制命令
+            document.execCommand('Copy'); // 执行浏览器复制命令
             clearSlct();
 
-            setTimeout(function () { btn.innerHTML = "Click to Copy"; }, 500);
-        }
-    </script>
-    <button class="copy_button"
-        onclick="copyTextjT8t5oSgGeoLCNNlF4h7AFzmTikjsZ4yGbxEA6yWBimylCdQnKCJwtktto7eEbGO()">Click to Copy</button>
+            setTimeout(function () { btn.innerHTML = 'Click to Copy'; }, 500);
+        ">Click to Copy</button>
     <div class="highlight">
-        <pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;helloworld&quot;</span><span class="p">)</span>
-    </pre>
+        <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">pygments</span>
+<span class="kn">from</span> <span class="nn">pygments</span> <span class="kn">import</span> <span class="n">lexers</span><span class="p">,</span><span class="n">formatters</span>
+<span class="n">lex</span><span class="o">=</span><span class="n">lexers</span><span class="o">.</span><span class="n">PythonLexer</span><span class="p">()</span>
+<span class="n">HTML</span><span class="o">=</span><span class="n">formatters</span><span class="o">.</span><span class="n">HtmlFormatter</span><span class="p">()</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;text.py&quot;</span><span class="p">,</span><span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">content</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf8&quot;</span><span class="p">)</span>
+<span class="n">html</span><span class="o">=</span><span class="n">pygments</span><span class="o">.</span><span class="n">highlight</span><span class="p">(</span><span class="n">content</span><span class="p">,</span><span class="n">lex</span><span class="p">,</span><span class="n">HTML</span><span class="p">)</span>
+
+<span class="n">random_str</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([(</span><span class="k">lambda</span><span class="p">:</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="s2">&quot;0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM&quot;</span><span class="p">))()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">64</span><span class="p">)])</span>
+<span class="n">code_id</span><span class="o">=</span><span class="n">random_str</span><span class="p">()</span>
+<span class="n">final_text</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;div class=&quot;code&quot; id=&quot;</span><span class="si">%s</span><span class="s2">&quot;&gt;</span>
+<span class="s2">    &lt;button class=&quot;copy_button&quot;</span>
+<span class="s2">        onclick=&quot;</span>
+<span class="s2">            var parent_ = document.getElementById(&#39;</span><span class="si">%s</span><span class="s2">&#39;);</span>
+<span class="s2">            var content_ = parent_.children[1];</span>
+<span class="s2">            var btn = parent_.children[0];</span>
+
+<span class="s2">            var clearSlct = &#39;getSelection&#39; in window ? function () {//清除已选择，来自https://www.cnblogs.com/wangpeng-friend/p/6733070.html</span>
+<span class="s2">                window.getSelection().removeAllRanges();} : </span>
+<span class="s2">                function () {document.selection.empty();};</span>
+
+<span class="s2">            btn.innerHTML = &#39;Copied&#39;;</span>
+
+<span class="s2">            if (document.body.createTextRange) {</span>
+<span class="s2">                var range = document.body.createTextRange();</span>
+<span class="s2">                range.moveToElementText(content_);</span>
+<span class="s2">                range.select();</span>
+<span class="s2">            }</span>
+<span class="s2">            else if (window.getSelection) {</span>
+<span class="s2">                var selection = window.getSelection();</span>
+<span class="s2">                var range = document.createRange();</span>
+<span class="s2">                range.selectNodeContents(content_);</span>
+<span class="s2">                selection.removeAllRanges();</span>
+<span class="s2">                selection.addRange(range);</span>
+<span class="s2">            }</span>
+<span class="s2">            else {</span>
+<span class="s2">                console.warn(&#39;none&#39;);</span>
+<span class="s2">            }</span>
+<span class="s2">            document.execCommand(&#39;Copy&#39;); // 执行浏览器复制命令</span>
+<span class="s2">            clearSlct();</span>
+
+<span class="s2">            setTimeout(function () { btn.innerHTML = &#39;Click to Copy&#39;; }, 500);</span>
+<span class="s2">        &quot;&gt;Click to Copy&lt;/button&gt;</span>
+<span class="s2">    &lt;div class=&quot;highlight&quot;&gt;</span>
+<span class="s2">        &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;helloworld&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;</span>
+<span class="s2">    &lt;/pre&gt;</span>
+<span class="s2">    &lt;/div&gt;</span>
+
+<span class="s2">&lt;/div&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">code_id</span><span class="p">,</span><span class="n">code_id</span><span class="p">,</span><span class="n">code_id</span><span class="p">,</span><span class="n">code_id</span><span class="p">,</span><span 
+class="n">html</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">final_text</span><span class="p">)</span>
+</pre></div>
+
     </div>
 
 </div>
