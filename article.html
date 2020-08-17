@@ -26,6 +26,7 @@
     <div id="main_content">
         <br><br><br><br><br><br><br><br><br>
     </div>
+    <!-- license -->
     <div name="license" style="
                 position:fixed;
                 width:100%;
@@ -38,6 +39,7 @@
                 rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0
                 国际许可协议</a>进行许可。
     </div>
+    <!-- side_bar -->
     <div id="side_bar">
         <div name="background_picture" style="
             overflow: hidden;
@@ -91,7 +93,7 @@
             cursor: pointer;
         ">
             <li onclick="location.href=(location.protocol+'article.html?introduction')">Introduction</li>
-            <li>Blogs</li>
+            <li title="没东西，别点啦">Blogs</li>
         </div>
 
         <img name="github" style="
@@ -114,6 +116,7 @@
 
     </div>
 </body>
+<!-- js渲染 -->
 <script type="text/javascript">
     if(location.search.length == 0){var url = location.protocol+"/404.html";}
     else{var url = location.protocol+"/articles/" + location.search.substr(1, location.search.length - 1) + ".html";}
