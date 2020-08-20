@@ -15,7 +15,7 @@
             position: fixed;
             left: 0px;
             top: 0px;
-            background-color: rgb(67, 105, 139);
+            background-color: #43698b;
             color: #e6e6e6;
             float: inherit;
             box-shadow: 0px 0px 5px #888888;
@@ -90,14 +90,13 @@
             position: relative;
             font-size: 30px;
             line-height: 50px;
-            left: 10px;
             top:10px;
             text-shadow: 0px 0px 10px #000000;
             list-style: none;
             cursor: pointer;
         ">
-            <li onclick="location.href=(location.protocol+'article.html?introduction')">Introduction</li>
-            <li title="没东西，别点啦">Blogs</li>
+            <li onclick="location.href=(location.protocol+'article.html?introduction')" id="Introduction" class="side_btn">Introduction</li>
+            <li title="没东西，别点啦" id="blog" class='side_btn' onclick="alert('客官别着急，comming soon~')">Blogs</li>
         </div>
 
         <img name="github" style="
@@ -121,50 +120,7 @@
     </div>
 </body>
 <!-- js渲染 -->
-<script type="text/javascript">
-    //获得文章
-    if (location.search.length == 0) { var url = location.protocol + "/404.html"; }
-    else { var url = location.protocol + "/articles/" + location.search.substr(1, location.search.length - 1) + ".html"; }
-    var httpRequest = new XMLHttpRequest();//创建HttpRequest对象
-    httpRequest.open('GET', url, true); //打开连接
-    httpRequest.send();
-
-    httpRequest.onreadystatechange = function () {//回调函数
-        if (httpRequest.readyState == 4 && httpRequest.status == 200) {//如果成功
-            var html = httpRequest.responseText;//获取到服务端返回的数据
-            document.getElementById("main_content").innerHTML = html + document.getElementById("main_content").innerHTML;
-        }
-        else if (httpRequest.status == 404) {//如果没有获取到
-            location.href = location.protocol + "/article.html";//用一种奇奇怪怪的方式跳转到404页面
-        }
-    };
-</script>
-<script>
-    //处理图片框
-
-    function load_image_frame(){
-        var frames = document.getElementsByClassName("img_frame");
-        for (i = 0; i < frames.length; i++) {
-            var frame = frames[i];
-            if(typeof(frame)=="object"){
-                var img_src=frame.getAttribute("image");
-                var text=frame.getAttribute("text");
-                var size=(frame.getAttribute("size") ? Number(frame.getAttribute("size")) : 1);
-                frame.innerHTML="<div><img id=\"imgframe\" src=\""+img_src+"\"></div>";
-                var child_div=frame.firstChild;
-                var img_ele=child_div.firstChild;
-                var width=img_ele.width;
-                var height=img_ele.height;
-                var size_css=function(exx,exy){return "width:"+String(width*size+exx)+"px;height:"+String(height*size+exy)+"px;";}
-                var div_css=(child_div.getAttribute("style") ? child_div.getAttribute("style") : "")+size_css(30,60)+"position:relative;left:10px;top:5px;box-shadow:0px 0px 10px #888888";
-                var img_css=(img_ele.getAttribute("style") ? img_ele.getAttribute("style") : "")+size_css(0,0)+"position:relative;left:15px;top:15px;";
-                var frame_css=(frame.getAttribute("style") ? frame.getAttribute("style") : "")+size_css(50,0);
-                img_ele.setAttribute("style",img_css);
-                child_div.setAttribute("style",div_css);
-                frame.setAttribute("style",frame_css);
-                child_div.innerHTML+=("<p style='position:relative;box_shadow:0px 0px 10px #888888'>"+text+"</p>");
-            }
-        }
-    }
-    setTimeout(load_image_frame,100)
-</script>
+<script type="text/javascript" src="javascript/jquery/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="javascript/fetch_article.js"></script>
+<script type="text/javascript" src="javascript/frame_maker.js"></script>
+<script type="text/javascript" src="javascript/jquery/side_btn.js"></script>
